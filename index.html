@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+		.FlexBlock
+		{
+			display: flex;
+		}
+		.TextSection
+		{
+			line-height: 25px;
+			text-align: right;
+			margin-left: 10px;
+		}
+		.InputSection
+		{
+			line-height: 25px;
+			margin-left: 20px;
+		}
+		input
+		{
+			outline: none;
+		}
+		.ShowData
+		{
+			margin-left: 73px;
+			margin-top: 3px;
+		}
+	</style>
+</head>
+<body>
+   
+	<div class="test"><p>aaaaaaaaaaaaa</p></div>
+    <script>
+		var input = document.getAttribute('.test p');
+		 var ouput = input.value;
+		 alert(ouput);
+	</script>     
+
+
+    <script>
+		var decodeEntities = (function() {
+		// this prevents any overhead from creating the object each time
+		var element = document.createElement('div');
+
+		function decodeHTMLEntities (str) {
+		if(str && typeof str === 'string') {
+			// strip script/html tags
+			str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
+			str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
+			element.innerHTML = str;
+			str = element.textContent;
+			element.textContent = '';
+		}
+
+		return str;
+		}
+
+		return decodeHTMLEntities;
+		})();
+
+
+		// I can't use a script tag in this example
+		var text = decodeEntities('<p>- 01 t&uacute;i đựng laptop.<br />- Phần mền diệt virus McAfee 3 năm trị gi&aacute; 750k.</p>')
+
+		document.write(text);
+	   
+	</script>
+
+</body>
+</html>
